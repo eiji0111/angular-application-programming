@@ -1,7 +1,15 @@
 import { Component } from '@angular/core';
 
+// 構成を宣言する
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  template: `<h1>Hello {{member?.name}}</h1>`,
 })
-export class AppComponent  { name = 'Angular'; }
+
+// クラス名
+export class AppComponent  {
+  member = {
+    name: '田中太郎',
+    age: 26,
+  }
+}

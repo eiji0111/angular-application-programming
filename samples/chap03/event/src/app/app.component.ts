@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-  selector: 'my-app',  
+  selector: 'my-app',
   template: `
     <input type="button" (click)="show()" value="現在時刻" />
     {{msg}}    
   `
-  
+
   /*
   template: `
     <input type="button" on-click="show()" value="現在時刻" />
@@ -28,11 +28,11 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   msg = '---';
-  
+
   show() {
     this.msg = new Date().toLocaleString();
   }
-  
+
 
   /*
   show(e: any) {

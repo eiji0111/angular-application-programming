@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-    <div [style.background-color]="bcolor">WINGSプロジェクト</div>
+    <div [style.background-color]="bcolor"
+      [style.color]="'blue'"
+      [style.font-size.%]="size">WINGSプロジェクト</div>
   `
 
   // 式の値によって、オンオフを切り替えたい場合
@@ -15,6 +17,7 @@ import { Component } from '@angular/core';
   */
 })
 export class AppComponent {
-   bcolor = '#0ff';
+  bcolor = 'red';
+  size = '150';
   // bcolor = true;
 }

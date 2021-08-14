@@ -12,6 +12,6 @@ import { Component } from '@angular/core';
     <li>{{str | slice: -10}}</li>
     </ul>`
   })
-export class AppComponent  {
+export class AppComponent {
   str = 'いろはにほへと';
 }

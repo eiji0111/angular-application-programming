@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<pre>{{obj | json}}</pre>`
+  template: `
+    <pre>{{obj | json}}</pre>
+  `
 })
-export class AppComponent  {
- obj = {
+export class AppComponent {
+ obj: any = {
    name: 'トクジロウ',
    gender: undefined,
    birth: new Date(2007, 7, 15),

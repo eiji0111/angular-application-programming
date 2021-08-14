@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   template: `
     <form>
       <label for="name">名前: </label>
-      <input id="name" name="name" type="text" [(ngModel)]="myName" value="初期値" />
+      <input id="name" name="name" type="text"
+      [ngModel]="myName"
+      (ngModelChange)="myName=$event.toUpperCase()"
+      value="初期値" />
       <div>こんにちは、{{myName}}さん！</div>
     </from>
   `,

@@ -6,27 +6,27 @@ import { Component } from '@angular/core';
   template: `
     <form #myform="ngForm" (ngSubmit)="show()" novalidate>
       <div>
-        <label for="mail">メールアドレス： </label><br>
+        <label for="mail">メールアドレス： </label><br />
         <input id="mail" name="mail" type="email"
-          [(ngModel)]="user.mail" #mail="ngModel" required email />
+          [(ngModel)]="user.mail" #mail="ngModel" required email>
         <span *ngIf="mail.errors?.required">
           メールアドレスは必須です。</span>
         <span *ngIf="mail.errors?.email">
           メールアドレスを正しい形式で入力してください。</span>
       </div>
       <div>
-        <label for="passwd">パスワード： </label><br>
+        <label for="passwd">パスワード： </label>
         <input id="passwd" name="passwd" type="password"
-          [(ngModel)]="user.passwd" required minlength="6" #passwd="ngModel" />
+          [(ngModel)]="user.passwd" required minlength="6" #passwd="ngModel">
         <span *ngIf="passwd.errors?.required">
           パスワードは必須です。</span>
         <span *ngIf="passwd.errors?.minlength">
           パスワードは6文字以上で入力してください。</span>
       </div>
       <div>
-        <label "name">名前(漢字)： </label><br>
+        <label "name">名前（漢字）： </label>
         <input id="name" name="name" type="text"
-          [(ngModel)]="user.name" required minlength="3" maxlength="10" #name="ngModel" />
+          [(ngModel)]="user.name" required minlength="3" maxlength="10" #name="ngModel">
         <span *ngIf="name.errors?.required">
           名前(漢字)は必須です。</span>
         <span *ngIf="name.errors?.minlength">
@@ -35,7 +35,7 @@ import { Component } from '@angular/core';
           名前(漢字)は10文字以内で入力してください。</span>
       </div>
       <div>
-        <label "memo">備考： </label><br>
+        <label "memo">備考： </label>
         <textarea id="memo" name="memo" rows="5" cols="30"
           [(ngModel)]="user.memo" required maxlength="10" #memo="ngModel"></textarea>
         <span *ngIf="memo.errors?.maxlength">
@@ -43,7 +43,7 @@ import { Component } from '@angular/core';
       </div>
       <div>
         <input type="submit" value="送信"
-          [disabled]="myForm.invalid" />
+          [disabled]="myForm.invalid">
       </div>
     </from>
   `

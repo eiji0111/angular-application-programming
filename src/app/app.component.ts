@@ -4,30 +4,30 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   template: `
-    <form #myform="ngForm" (ngSubmit)="show()" novalidate>
+    <form #myForm="ngForm" (ngSubmit)="show()" novalidate>
       <div>
         <label for="mail">メールアドレス： </label><br />
         <input id="mail" name="mail" type="email"
           [(ngModel)]="user.mail" #mail="ngModel" required email>
-        <span *ngIf="mail.errors?.required">
+        <span *ngIf="mail.errors?.required && passwd.dirty">
           メールアドレスは必須です。</span>
         <span *ngIf="mail.errors?.email">
           メールアドレスを正しい形式で入力してください。</span>
       </div>
       <div>
-        <label for="passwd">パスワード： </label>
+        <label for="passwd">パスワード： </label><br />
         <input id="passwd" name="passwd" type="password"
           [(ngModel)]="user.passwd" required minlength="6" #passwd="ngModel">
-        <span *ngIf="passwd.errors?.required">
+        <span *ngIf="passwd.errors?.required && passwd.dirty">
           パスワードは必須です。</span>
         <span *ngIf="passwd.errors?.minlength">
           パスワードは6文字以上で入力してください。</span>
       </div>
       <div>
-        <label "name">名前（漢字）： </label>
+        <label for="name">名前（漢字）： </label><br />
         <input id="name" name="name" type="text"
           [(ngModel)]="user.name" required minlength="3" maxlength="10" #name="ngModel">
-        <span *ngIf="name.errors?.required">
+        <span *ngIf="name.errors?.required && passwd.dirty">
           名前(漢字)は必須です。</span>
         <span *ngIf="name.errors?.minlength">
           名前(漢字)は3文字以上で入力してください。</span>
@@ -35,7 +35,7 @@ import { Component } from '@angular/core';
           名前(漢字)は10文字以内で入力してください。</span>
       </div>
       <div>
-        <label "memo">備考： </label>
+        <label for="memo">備考： </label><br />
         <textarea id="memo" name="memo" rows="5" cols="30"
           [(ngModel)]="user.memo" required maxlength="10" #memo="ngModel"></textarea>
         <span *ngIf="memo.errors?.maxlength">
@@ -43,9 +43,11 @@ import { Component } from '@angular/core';
       </div>
       <div>
         <input type="submit" value="送信"
-          [disabled]="myForm.invalid">
+          [disabled]="myForm.invalid || myForm.submitted">
+        <input type="reset" value="リセット" [disabled]="!myForm.dirty" />
       </div>
-    </from>
+    </form>
+    <pre>{{ myForm.value | json }}</pre>
   `
 })
 
@@ -55,7 +57,7 @@ export class AppComponent  {
   user = {
     mail: 'hogehoge@test.com',
     passwd: '',
-    name: '名無権兵衛',
+    name: '匿名希望',
     memo: 'メモ',
   };
 

@@ -1,60 +1,44 @@
 import { Component } from '@angular/core';
+// 書籍オブジェクトをインポート
+import { Book } from './book';
 
 // 構成を宣言する
 @Component({
   selector: 'my-app',
   template: `
-    <form #myForm="ngForm">
-      <h4>好きな動物を選んでください(ラジオボタン)</h4>
-      <ng-container *ngFor="let item of data; index as i">
-        <label>
-          <input type="radio" name="animal"
-            [(ngModel)]="selected"
-            [value]="item.value" [checked]="selected == item.value"
-            (change)="show(i)">{{item.label}}
-        </label><br />
-        </ng-container>
-        <h4>好きな動物を選んでください(チェックボックス)</h4>
-        <ng-container *ngFor="let item of data; index as i">
-          <label>
-            <input type="checkbox" name="animal{{i}}"
-              [(ngModel)]="data[i].selected"
-              [value]="item.value"
-              (change)="show2()">{{item.label}}
-          </label><br />
-        </ng-container>
-        <select name="animal" [(ngModel)]="selected" (change)="show3()">
-          <option value="">ペットを選択してください</option>
-          <option *ngFor="let item of data"
-            [value]="item.value" [disabled]="item.disabled"
-            [selected]="item.value == selected">{{item.value}}
-          </option>
-        </select>
-    </form>
+    <div>
+      <span *ngFor="let b of books">
+        [<a href="#" (click)="onclick(b)">{{ b.title }}</a>]
+      </span>
+    </div>
+    <hr />
+    <detail-book [item]="selected"></detail-book>
   `
 })
 
 // クラス名
 export class AppComponent  {
-  selected = 'hamster';
-  data = [
-    {label: '犬', value: 'dog', selected: false, disabled: false},
-    {label: '猫', value: 'cat', selected: false, disabled: false},
-    {label: 'ハムスター', value: 'hamster', selected: false, disabled: false},
-    {label: '金魚', value: 'fish', selected: false, disabled: false},
-    {label: '亀', value: 'turtle', selected: false, disabled: false},
-  ];
+  // リスト側で選択された書籍
+  selected: Book;
+  // 書籍情報を準備
+  books = [
+    {
+      isbn: '978-4-7741-8411-1',
+      title: '改訂新版JavaScript本格入門',
+      price: 2980,
+      publisher: '技術評論社',
+    },
+    {
+      isbn: '978-4-7980-4853-6',
+      title: 'はじめてのAndroidアプリ開発 第2版',
+      price: 3200,
+      publisher: '秀和システム',
+    },
+  ]
 
-  // ラジオボタンの変更時に現在地をログに出力
-  show(i: number) {
-    console.log('現在地（ラベル）：' + this.data[i].label);
-    console.log('現在地（値）：' + this.selected);
-  }
-  show2() {
-    console.log(this.data);
-  }
-  show3() {
-    console.log('現在地：' + this.selected);
+  // リンククリック時に選択された書籍情報をselectedプロパティに保存
+  onclick(book: Book) {
+    this.selected = book;
   }
 }
 

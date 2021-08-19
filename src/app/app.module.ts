@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { DetailsComponent } from './details.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent],
+  declarations: [AppComponent, DetailsComponent],
   bootstrap: [AppComponent] // ルートコンポーネント・メインコンポーネントという。
 })
 export class AppModule { }

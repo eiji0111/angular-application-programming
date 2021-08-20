@@ -6,10 +6,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DetailsComponent } from './details.component';
+import { EditComponent } from './edit.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, DetailsComponent],
+  declarations: [AppComponent, DetailsComponent, EditComponent],
   bootstrap: [AppComponent] // ルートコンポーネント・メインコンポーネントという。
 })
 export class AppModule { }

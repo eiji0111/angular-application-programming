@@ -6,10 +6,11 @@ import { HttpModule } from '@angular/http';
 
 import { CoopModule } from './coop/coop.module';
 import { AppComponent } from './app.component';
+import { ChildComponent } from './child.component';
 
 @NgModule({
   imports: [BrowserModule, CoopModule],
-  declarations: [AppComponent],
+  declarations: [AppComponent, ChildComponent],
   bootstrap: [AppComponent] // ルートコンポーネント・メインコンポーネントという。
 })
 export class AppModule { }

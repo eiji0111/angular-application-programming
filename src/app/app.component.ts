@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, DoCheck,
+  AfterContentInit, AfterContentChecked, AfterViewInit,
+  AfterViewChecked, OnDestroy } from '@angular/core';
 // 書籍オブジェクトをインポート
 import { Book } from './book';
 

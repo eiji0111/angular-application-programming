@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, DoCheck,
   AfterContentInit, AfterContentChecked, AfterViewInit,
   AfterViewChecked, OnDestroy } from '@angular/core';
+import { style } from '@angular/core/src/animation/dsl';
 
 // 構成を宣言する
 @Component({
@@ -12,7 +13,12 @@ import { Component, OnChanges, OnInit, DoCheck,
       </label>
     </div>
     <my-child [time]="current" *ngIf="show"></my-child>
-  `
+  `,
+  styles: [`
+    :host >>> p {
+      display: block;
+      border: 1px double Red;
+    }`]
 })
 
 // クラス名

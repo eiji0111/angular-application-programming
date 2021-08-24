@@ -12,6 +12,6 @@ import { ChildComponent } from './child.component';
 @NgModule({
   imports: [BrowserModule, CoopModule, BrowserAnimationsModule],
   declarations: [AppComponent, ChildComponent],
-  bootstrap: [AppComponent] // ルートコンポーネント・メインコンポーネントという。
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
